@@ -4,13 +4,30 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Job Finder</title>
 </h:head>
 <h:body>
-    <h3>Hello World</h3>
-    <a href="#!">MEU PAU DE ASA</a>
+    <h2>Área de login</h2>
+    <div class="ui-g">
+        <h:form>
+            <div class="ui-g-12">
+                <p:panelGrid columns="1">
+                    <p:outputLabel value="Email"></p:outputLabel>
+                    <p:inputText value="#{loginBean.login}"></p:inputText>
+
+                    <p:outputLabel value="Senha"></p:outputLabel>
+                    <p:password id="nonFeedback" value="#{loginBean.password}"/>
+
+                    <p:commandButton actionListener="#{loginBean.login()}" value="Login"></p:commandButton>
+                </p:panelGrid>
+            </div>
+            <p:commandButton actionListener="#{userBean.registerUser}" value="Cadastrar usuário"></p:commandButton>
+        </h:form>
+    </div>
 </h:body>
 </html>
