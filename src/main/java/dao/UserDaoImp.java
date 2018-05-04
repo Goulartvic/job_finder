@@ -1,6 +1,7 @@
 package dao;
 
-import br.ufsc.model.User;
+
+import model.User;
 
 import javax.persistence.EntityManager;
 import java.util.List;
