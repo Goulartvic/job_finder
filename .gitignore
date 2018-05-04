@@ -1,4 +1,7 @@
 # IntelliJ project files
 .idea
 *.iml
-target/*
+/target
+/target/*
+/target/**
+/target/**/
