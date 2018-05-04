@@ -5,28 +5,28 @@
         <!-- Define que a implementação de JPA 2 que estamos utilizando é o Hibernate -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!-- Início da definição dos nomes das classes que definem as entidades -->
-        <class>br.ufsc.model</class>
-        <!-- Término da definição dos nomes das classes que definem as entidades -->
+        <!--&lt;!&ndash; Início da definição dos nomes das classes que definem as entidades &ndash;&gt;-->
+        <!--<class>br.ufsc.model</class>-->
+        <!--&lt;!&ndash; Término da definição dos nomes das classes que definem as entidades &ndash;&gt;-->
 
         <properties>
             <!-- Propriedades do Hibernate -->
             <!-- Define qual variação do SQL será utilizada -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <!-- Define quando mostrar no log as consultas SQL geradas -->
-            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.show_sql" value="false"/>
             <!-- Formata o log das consultas SQL geradas -->
-            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.format_sql" value="true"/>
 
             <!-- Propriedades JPA -->
             <!-- Nome completo da classe do driver de conexão -->
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <!-- Definição da localização do banco e o nome da base -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <!-- Definição do usuário do banco de dados -->
-            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
             <!-- Definição da senha do usuário -->
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="root"/>
         </properties>
     </persistence-unit>
 
