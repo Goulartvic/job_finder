@@ -15,20 +15,22 @@
     <h2>Faça seu cadastro no sistema</h2>
     <div class="ui-g">
         <h:form>
-            <p:outputLabel>Nome</p:outputLabel>
-            <p:inputText value="#{userBean.name}"> </p:inputText>
-            <p:outputLabel>CPF</p:outputLabel>
-            <p:inputText value="#{userBean.cpf}"> </p:inputText>
-            <p:outputLabel>Telefone</p:outputLabel>
-            <p:inputText value="#{userBean.phone}"> </p:inputText>
-            <span>(Se houver)</span>
-            <p:outputLabel>Empresa </p:outputLabel>
-            <p:inputText value="#{userBean.company}"/>
-            <p:outputLabel value="Login"> </p:outputLabel>
-            <p:inputText value="#{userBean.login}"/>
-            <p:outputLabel>Senha</p:outputLabel>
-            <p:password id="nonFeedback" value="#{userBean.password}"/>
-            <p:commandButton actionListener="#{userBean.save}">Cadastrar usuário</p:commandButton>
+            <h:panelGrid>
+                <p:outputLabel>Nome</p:outputLabel>
+                <p:inputText value="#{userBean.user.name}"> </p:inputText>
+                <p:outputLabel>CPF</p:outputLabel>
+                <p:inputText value="#{userBean.user.cpf}"> </p:inputText>
+                <p:outputLabel>Telefone</p:outputLabel>
+                <p:inputText value="#{userBean.user.phone}"> </p:inputText>
+                <span>(Se houver)</span>
+                <p:outputLabel>Empresa </p:outputLabel>
+                <p:inputText value="#{userBean.user.company}"/>
+                <p:outputLabel value="Login"> </p:outputLabel>
+                <p:inputText value="#{userBean.user.login}"/>
+                <p:outputLabel>Senha</p:outputLabel>
+                <p:password id="nonFeedback" value="#{userBean.user.password}"/>
+                <p:commandButton actionListener="#{userBean.save}" value="Salvar"/>
+            </h:panelGrid>
         </h:form>
     </div>
 </h:body>

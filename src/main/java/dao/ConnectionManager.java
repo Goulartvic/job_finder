@@ -1,5 +1,6 @@
 package dao;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,7 +11,7 @@ public class ConnectionManager {
 
     public static EntityManager getEntityManager() {
         if (em == null) {
-            factory = Persistence.createEntityManagerFactory("postgres");
+            factory = Persistence.createEntityManagerFactory("job_finder");
             em = factory.createEntityManager();
         }
         return em;

@@ -9,7 +9,7 @@ public interface UserDao extends DAO<User> {
 
     List<User> findUserByCPF(String cpf);
 
-    User findById(Long id);
+    User findById(int id);
 
     User authenticate(String login, String password);
 }

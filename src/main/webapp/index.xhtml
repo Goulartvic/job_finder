@@ -17,16 +17,16 @@
         <h:form>
             <div class="ui-g-12">
                 <p:panelGrid columns="1">
-                    <p:outputLabel value="Email"></p:outputLabel>
-                    <p:inputText value="#{loginBean.login}"></p:inputText>
+                    <p:outputLabel value="Email"/>
+                    <p:inputText value="#{loginBean.login}"/>
 
-                    <p:outputLabel value="Senha"></p:outputLabel>
+                    <p:outputLabel value="Senha"/>
                     <p:password id="nonFeedback" value="#{loginBean.password}"/>
 
-                    <p:commandButton actionListener="#{loginBean.login()}" value="Login"></p:commandButton>
+                    <p:commandButton actionListener="#{loginBean.login()}" value="Login"/>
                 </p:panelGrid>
             </div>
-            <p:commandButton actionListener="#{userBean.registerUser}" value="Cadastrar usuário"></p:commandButton>
+            <p:commandButton actionListener="#{loginBean.registerUser}" value="Cadastrar usuário"/>
         </h:form>
     </div>
 </h:body>

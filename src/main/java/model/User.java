@@ -1,13 +1,13 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = "\"User\"")
 public class User {
 
     @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     @Column
     private String name;
@@ -21,19 +21,6 @@ public class User {
     private String login;
     @Column
     private String password;
-
-    public User() {
-    }
-
-    public User(String name, int cpf, String phone, String company, String login, String password) {
-        this.name = name;
-        this.cpf = cpf;
-        this.phone = phone;
-        this.company = company;
-        this.login = login;
-        this.password = password;
-    }
-
 
     public int getId() {
         return id;
@@ -89,5 +76,18 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cpf=" + cpf +
+                ", phone='" + phone + '\'' +
+                ", company='" + company + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

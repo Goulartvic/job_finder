@@ -15,21 +15,6 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
     }
 
     @Override
-    public void save(User user) {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete(User user) {
-
-    }
-
-    @Override
     public List<User> findAll() {
         return null;
     }
@@ -40,7 +25,7 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(int id) {
         return null;
     }
 

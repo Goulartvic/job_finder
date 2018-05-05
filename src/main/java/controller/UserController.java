@@ -20,6 +20,7 @@ public class UserController {
         if (user.getPassword() == null || user.getPassword().trim().isEmpty()) {
             throw new Exception("A senha é obrigatória!");
         }
+        System.out.println(user.getId());
         if (user.getId() == 0) {
             userDao.save(user);
         } else {

@@ -7,6 +7,6 @@ public abstract class DaoFactory {
         if (userDao == null) {
             userDao = new UserDaoImp();
         }
-        return null;
+        return userDao;
     }
 }
