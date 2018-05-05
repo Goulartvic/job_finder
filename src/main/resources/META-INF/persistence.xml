@@ -24,7 +24,7 @@
             <!-- Definição da localização do banco e o nome da base -->
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <!-- Definição do usuário do banco de dados -->
-            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
             <!-- Definição da senha do usuário -->
             <property name="javax.persistence.jdbc.password" value="root"/>
         </properties>

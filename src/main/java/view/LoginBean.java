@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
 
-@ManagedBean(name = "loginBean")
+@ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
     private String login;
