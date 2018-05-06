@@ -14,6 +14,7 @@
             <!-- Define qual variação do SQL será utilizada -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
             <!-- create / create-drop / update -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <!-- Define quando mostrar no log as consultas SQL geradas -->
             <property name="hibernate.show_sql" value="false"/>
             <!-- Formata o log das consultas SQL geradas -->

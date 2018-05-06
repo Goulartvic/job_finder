@@ -4,6 +4,7 @@ package dao;
 import model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
@@ -16,7 +17,8 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
 
     @Override
     public List<User> findAll() {
-        return null;
+        Query query = manager.createNamedQuery("user.findAll");
+        return query.getResultList();
     }
 
     @Override

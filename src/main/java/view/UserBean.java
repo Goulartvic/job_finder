@@ -1,6 +1,7 @@
 package view;
 
 import controller.UserController;
+import dao.UserDao;
 import model.User;
 
 import javax.faces.application.FacesMessage;
