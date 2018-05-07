@@ -4,6 +4,9 @@ import dao.DaoFactory;
 import dao.UserDao;
 import model.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserController {
     UserDao userDao = DaoFactory.getUserDao();
 
@@ -25,5 +28,10 @@ public class UserController {
         } else {
             userDao.update();
         }
+    }
+
+    public ArrayList<User> listAll() {
+        ArrayList<User> users = (ArrayList<User>) userDao.findAll();
+        return users;
     }
 }

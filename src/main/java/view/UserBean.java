@@ -17,9 +17,13 @@ import java.util.List;
 @SessionScoped
 public class UserBean implements Serializable {
 
-    private List<User> userList = new ArrayList<User>();
+    private List<User> userList;
     private UserController userController = new UserController();
     private User user = new User();
+
+    public UserBean() {
+//        this.userList = userController.listAll();
+    }
 
     public User getUser() {
         return user;
@@ -27,6 +31,15 @@ public class UserBean implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<User> getUserList() {
+        System.out.println(userList.toArray());
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public void save() {
@@ -39,5 +52,10 @@ public class UserBean implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void listUsers() {
+        setUserList(userList = userController.listAll());
+        System.out.println(userList);
     }
 }

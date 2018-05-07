@@ -67,4 +67,12 @@ public class LoginBean implements Serializable {
             System.out.println(e.getMessage());
         }
     }
+
+    public void listUsers() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("public/listAllUsers.xhtml");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

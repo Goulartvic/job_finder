@@ -17,8 +17,9 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
 
     @Override
     public List<User> findAll() {
-        Query query = manager.createNamedQuery("user.findAll");
-        return query.getResultList();
+//        Query query = manager.createNamedQuery("User.findAll");
+//        return query.getResultList();
+        return null;
     }
 
     @Override

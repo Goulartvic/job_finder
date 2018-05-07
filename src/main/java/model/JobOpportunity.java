@@ -1,15 +1,28 @@
 package model;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class JobOpportunity {
+    @Id
+    @GeneratedValue
     private int id;
+    @Column
     private String company;
+    @Column
     private TypeOfJob typeOfJob;
+    @Column
     private String schedule;
+    @Column
     private String workplace;
+    @Column
     private float salary;
+
+    public JobOpportunity() {
+    }
 
     public JobOpportunity(String company, TypeOfJob typeOfJob, String schedule, String workplace, float salary) {
         this.company = company;
@@ -17,6 +30,14 @@ public class JobOpportunity {
         this.schedule = schedule;
         this.workplace = workplace;
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCompany() {

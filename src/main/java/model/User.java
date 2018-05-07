@@ -3,9 +3,9 @@ package model;
 import javax.persistence.*;
 
 @Entity(name = "\"User\"")
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "user.findAll", query = "SELECT u FROM User u")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+//})
 public class User {
 
     @Id

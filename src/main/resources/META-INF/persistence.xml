@@ -6,7 +6,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Início da definição dos nomes das classes que definem as entidades -->
-        <class>model</class>
+        <class>model.User</class>
+        <class>model.JobOpportunity</class>
         <!-- Término da definição dos nomes das classes que definem as entidades -->
 
         <properties>
