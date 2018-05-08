@@ -1,15 +1,15 @@
 package model;
 
 public enum TypeOfJob {
-    INTERNSHIP(1), EMPLOYMENT(2);
+    ESTAGIO("Estágio"), EFETIVO("Efetivo");
 
-    private final int typeOfJOb;
+    private final String typeOfJOb;
 
-    TypeOfJob(int typeOfJOb) {
+    TypeOfJob(String typeOfJOb) {
         this.typeOfJOb = typeOfJOb;
     }
 
-    public int getTypeOfJOb() {
+    public String getTypeOfJOb() {
         return typeOfJOb;
     }
 }

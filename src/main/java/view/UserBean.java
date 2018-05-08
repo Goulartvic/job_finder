@@ -1,17 +1,13 @@
 package view;
 
 import controller.UserController;
-import dao.UserDao;
 import model.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -45,7 +41,6 @@ public class UserBean implements Serializable {
     public void save() {
         FacesContext faces = FacesContext.getCurrentInstance().getCurrentInstance();
         try {
-            System.out.println(user);
             userController.save(user);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
             FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
@@ -56,6 +51,5 @@ public class UserBean implements Serializable {
 
     public void listUsers() {
         setUserList(userList = userController.listAll());
-        System.out.println(userList);
     }
 }

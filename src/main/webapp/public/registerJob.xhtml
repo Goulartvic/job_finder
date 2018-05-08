@@ -16,17 +16,22 @@
     <div class="ui-g">
         <h:form>
             <h:panelGrid>
+                <p:outputLabel value="Vaga"/>
+                <p:inputText value="#{jobOpportunityBean.job.name}"/>
                 <p:outputLabel value="Empresa"/>
-                <p:inputText value="#{}"/>
+                <p:inputText value="#{jobOpportunityBean.job.company}"/>
                 <p:outputLabel value="Tipo de trabalho"/>
-                <p:inputText value="#{}"/>
+                <p:selectOneMenu value="#{jobOpportunityBean.job.typeOfJob}">
+                    <f:selectItems value="#{jobOpportunityBean.typesOfJob}" var="t" itemValue="#{t}"
+                                   itemLabel="#{t.typeOfJOb}"/>
+                </p:selectOneMenu>
                 <p:outputLabel value="Horário"/>
-                <p:inputText value="#{}"/>
+                <p:inputText value="#{jobOpportunityBean.job.schedule}"/>
                 <p:outputLabel value="Local de trabalho"/>
-                <p:inputText value="#{}"/>
+                <p:inputText value="#{jobOpportunityBean.job.workplace}"/>
                 <p:outputLabel value="Salário"/>
-                <p:inputText value="#{}"/>
-                <p:commandButton value="Salvar" actionListener="#{}"/>
+                <p:inputText value="#{jobOpportunityBean.job.salary}"/>
+                <p:commandButton value="Salvar" actionListener="#{jobOpportunityBean.save}"/>
             </h:panelGrid>
         </h:form>
     </div>

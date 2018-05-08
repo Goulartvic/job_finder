@@ -3,6 +3,7 @@ package dao;
 public abstract class DaoFactory {
     private static UserDao userDao;
     private static JobOpportunityDao jobOpportunityDao;
+    private static CurriculumDao curriculumDao;
 
     public static UserDao getUserDao() {
         if (userDao == null) {
@@ -16,5 +17,12 @@ public abstract class DaoFactory {
             jobOpportunityDao = new JobOpportunityDaoImp();
         }
         return jobOpportunityDao;
+    }
+
+    public static CurriculumDao getCurriculumDao() {
+        if (curriculumDao == null) {
+            curriculumDao = new CurriculumDaoImp();
+        }
+        return curriculumDao;
     }
 }

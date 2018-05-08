@@ -5,7 +5,6 @@ import dao.UserDao;
 import model.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserController {
     UserDao userDao = DaoFactory.getUserDao();

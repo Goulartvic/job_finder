@@ -1,18 +1,19 @@
 package model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "curriculums")
 public class Curriculum {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private List<String> formation;
-    private List<String> experience;
-
-    public Curriculum(List<String> formation, List<String> experience) {
-        this.formation = formation;
-        this.experience = experience;
-    }
-
+    @Column
+    private String formation;
+    @Column
+    private String experience;
 
     public int getId() {
         return id;
@@ -22,19 +23,19 @@ public class Curriculum {
         this.id = id;
     }
 
-    public List<String> getFormation() {
+    public String getFormation() {
         return formation;
     }
 
-    public void setFormation(List<String> formation) {
+    public void setFormation(String formation) {
         this.formation = formation;
     }
 
-    public List<String> getExperience() {
+    public String getExperience() {
         return experience;
     }
 
-    public void setExperience(List<String> experience) {
+    public void setExperience(String experience) {
         this.experience = experience;
     }
 }

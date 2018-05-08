@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>A porra toda</title>
+</h:head>
+<h:body>
+    <h:panelGrid>
+        <p:dataTable var="job" value="#{jobOpportunityBean.jobs}">
+            <p:column headerText="Nome">
+                <h:outputText value="#{job.name}"/>
+            </p:column>
+            <p:column headerText="Empresa">
+                <h:outputText value="#{job.company}"/>
+            </p:column>
+
+            <p:column headerText="Tipo vaga">
+                <h:outputText value="#{job.typeOfJob.typeOfJOb}"/>
+            </p:column>
+
+            <p:column headerText="Local de trabalho">
+                <h:outputText value="#{job.workplace}"/>
+            </p:column>
+
+            <p:column headerText="Salário">
+                <h:outputText value="#{job.salary}"/>
+            </p:column>
+
+            <p:column headerText="Horário">
+                <h:outputText value="#{job.schedule}"/>
+            </p:column>
+        </p:dataTable>
+    </h:panelGrid>
+</h:body>
+</html>

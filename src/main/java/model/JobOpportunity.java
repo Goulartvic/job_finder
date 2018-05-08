@@ -9,6 +9,8 @@ public class JobOpportunity {
     @GeneratedValue
     private int id;
     @Column
+    private String name;
+    @Column
     private String company;
     @Column
     private TypeOfJob typeOfJob;
@@ -22,7 +24,8 @@ public class JobOpportunity {
     public JobOpportunity() {
     }
 
-    public JobOpportunity(String company, TypeOfJob typeOfJob, String schedule, String workplace, float salary) {
+    public JobOpportunity(String name, String company, TypeOfJob typeOfJob, String schedule, String workplace, float salary) {
+        this.name = name;
         this.company = company;
         this.typeOfJob = typeOfJob;
         this.schedule = schedule;
@@ -36,6 +39,14 @@ public class JobOpportunity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCompany() {
