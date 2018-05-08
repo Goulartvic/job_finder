@@ -1,4 +1,4 @@
- create table "User"
+ create table "users"
  (
  	id integer not null
  		constraint user_pkey
@@ -13,5 +13,5 @@
  ;
 
  create unique index user_cpf_uindex
- 	on "User" (cpf)
+ 	on "users" (cpf)
  ;

@@ -7,6 +7,7 @@ import model.User;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class UserBean implements Serializable {
 
     private List<User> userList;
@@ -22,7 +23,7 @@ public class UserBean implements Serializable {
     private User user = new User();
 
     public UserBean() {
-//        this.userList = userController.listAll();
+        this.userList = userController.listAll();
     }
 
     public User getUser() {
@@ -34,7 +35,6 @@ public class UserBean implements Serializable {
     }
 
     public List<User> getUserList() {
-        System.out.println(userList.toArray());
         return userList;
     }
 

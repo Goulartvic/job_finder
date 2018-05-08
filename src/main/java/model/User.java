@@ -2,10 +2,8 @@ package model;
 
 import javax.persistence.*;
 
-@Entity(name = "\"User\"")
-//@NamedQueries({
-//        @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-//})
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -20,7 +18,7 @@ public class User {
     private String phone;
     @Column
     private String company;
-    @Column
+    @Column(unique = true)
     private String login;
     @Column
     private String password;

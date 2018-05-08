@@ -17,9 +17,8 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
 
     @Override
     public List<User> findAll() {
-//        Query query = manager.createNamedQuery("User.findAll");
-//        return query.getResultList();
-        return null;
+        Query query = manager.createQuery("FROM User");
+        return query.getResultList();
     }
 
     @Override
@@ -34,6 +33,9 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
 
     @Override
     public User authenticate(String login, String password) {
-        return null;
+        Query query = manager.createQuery("FROM User u where u.login=:login and u.password=:password");
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return (User) query.getSingleResult();
     }
 }

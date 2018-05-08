@@ -9,6 +9,15 @@ import java.util.List;
 
 public class UserController {
     UserDao userDao = DaoFactory.getUserDao();
+    User sessionUser = new User();
+
+    public User getSessionUser() {
+        return sessionUser;
+    }
+
+    public void setSessionUser(User sessionUser) {
+        this.sessionUser = sessionUser;
+    }
 
     public void save(User user) throws Exception {
         if (user.getName() == null || user.getName().trim().isEmpty()) {
@@ -33,5 +42,14 @@ public class UserController {
     public ArrayList<User> listAll() {
         ArrayList<User> users = (ArrayList<User>) userDao.findAll();
         return users;
+    }
+
+    public boolean authenticateLogin(String login, String password) {
+        User user = userDao.authenticate(login, password);
+        if (user != null) {
+            setSessionUser(user);
+            return true;
+        }
+        return false;
     }
 }

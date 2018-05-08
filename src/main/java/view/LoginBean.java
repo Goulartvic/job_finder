@@ -1,5 +1,6 @@
 package view;
 
+import controller.UserController;
 import model.User;
 
 import javax.faces.application.FacesMessage;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 public class LoginBean implements Serializable {
     private String login;
     private String password;
+    private UserController controller = new UserController();
 
     private User userSession;
 
@@ -43,13 +45,12 @@ public class LoginBean implements Serializable {
 
     public void login() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        userSession = new User();
-        userSession.setLogin("123");
-        userSession.setPassword("123");
-
-        System.out.println(userSession.getLogin() + login + userSession.getPassword() + password + "fora do if");
-        if (userSession.getLogin().equals(login) && userSession.getPassword().equals(password)) {
-            System.out.println(userSession.getLogin() + login + userSession.getPassword() + password + "entrou no if");
+        if (controller.authenticateLogin(login, password)) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("public/listAllUsers.xhtml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ou senha inválido!", ""));
             try {
