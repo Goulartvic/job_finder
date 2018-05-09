@@ -22,6 +22,9 @@ public class User {
     private String login;
     @Column
     private String password;
+    @Column
+    @OneToOne
+    private Curriculum curriculum;
 
     public int getId() {
         return id;
@@ -77,6 +80,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Curriculum getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(Curriculum curriculum) {
+        this.curriculum = curriculum;
     }
 
     @Override

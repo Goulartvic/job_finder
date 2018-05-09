@@ -21,17 +21,8 @@ public class JobOpportunity {
     @Column
     private float salary;
 
-    public JobOpportunity() {
-    }
-
-    public JobOpportunity(String name, String company, TypeOfJob typeOfJob, String schedule, String workplace, float salary) {
-        this.name = name;
-        this.company = company;
-        this.typeOfJob = typeOfJob;
-        this.schedule = schedule;
-        this.workplace = workplace;
-        this.salary = salary;
-    }
+    @ManyToMany
+    @JoinTable
 
     public int getId() {
         return id;

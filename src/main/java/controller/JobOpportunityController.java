@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class JobOpportunityController {
     JobOpportunityDao jobOpportunityDao = DaoFactory.getJobOpportunityDao();
-
+//TODO - buscar usuarios por vaga
     public void save(JobOpportunity jobOpportunity) throws Exception {
 //        TODO - Fazer verificações
         if (jobOpportunity.getId() == 0) {
