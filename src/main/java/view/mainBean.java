@@ -1,20 +1,16 @@
 package view;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class mainBean implements Serializable {
 
-    public mainBean() {
-    }
-
     public void registerCurriculum() {
-        System.out.println("Abre a tela");
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("registerCurriculum.xhtml");
         } catch (IOException e) {

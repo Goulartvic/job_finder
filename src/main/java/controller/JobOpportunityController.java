@@ -8,12 +8,15 @@ import java.util.ArrayList;
 
 public class JobOpportunityController {
     JobOpportunityDao jobOpportunityDao = DaoFactory.getJobOpportunityDao();
-//TODO - buscar usuarios por vaga
+
+    //TODO - buscar usuarios por vaga
     public void save(JobOpportunity jobOpportunity) throws Exception {
 //        TODO - Fazer verificações
         if (jobOpportunity.getId() == 0) {
-            System.out.println("controller" + jobOpportunity);
             jobOpportunityDao.save(jobOpportunity);
+            System.out.println("Usuario dono da vaga- " + UserController.getInstance().getSessionUser());
+            UserController.getInstance().getSessionUser().setJobOpportunity(jobOpportunity);
+            UserController.getInstance().getUserDao().save(UserController.getInstance().getSessionUser());
         } else {
             jobOpportunityDao.update();
         }

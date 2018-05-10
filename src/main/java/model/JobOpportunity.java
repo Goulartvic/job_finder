@@ -22,6 +22,8 @@ public class JobOpportunity {
     private String workplace;
     @Column
     private float salary;
+    @Column
+    private JobStatus jobStatus;
 
     @ManyToMany
     @JoinTable(
@@ -91,5 +93,13 @@ public class JobOpportunity {
 
     public void setCurriculums(List<Curriculum> curriculums) {
         this.curriculums = curriculums;
+    }
+
+    public JobStatus getJobStatus() {
+        return jobStatus;
+    }
+
+    public void setJobStatus(JobStatus jobStatus) {
+        this.jobStatus = jobStatus;
     }
 }

@@ -13,10 +13,12 @@
 </h:head>
 <h:body>
     <p:panelGrid>
-        <p:commandButton value="Cadastrar curriculo" actionListener="#{mainBean.registerCurriculum}"/>
-        <!--<p:commandButton value="Visualizar curriculo"/>-->
-        <!--<p:commandButton value="Buscar vagas"/>-->
-        <p:commandButton value="Cadastrar vaga" actionListener="#{mainBean.registerJob}"/>
+        <h:form>
+            <p:commandButton actionListener="#{mainBean.registerCurriculum}" value="Cadastrar curriculo"/>
+            <p:commandButton actionListener="#{mainBean.registerJob}" value="Cadastrar vaga"/>
+            <!--<p:commandButton value="Visualizar curriculo"/>-->
+            <!--<p:commandButton value="Buscar vagas"/>-->
+        </h:form>
     </p:panelGrid>
 </h:body>
 </html>

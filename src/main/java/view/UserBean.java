@@ -15,11 +15,10 @@ import java.util.List;
 public class UserBean implements Serializable {
 
     private List<User> userList;
-    private UserController userController = new UserController();
     private User user = new User();
 
     public UserBean() {
-        this.userList = userController.listAll();
+        this.userList = UserController.getInstance().listAll();
     }
 
     public User getUser() {
@@ -39,17 +38,17 @@ public class UserBean implements Serializable {
     }
 
     public void save() {
-        FacesContext faces = FacesContext.getCurrentInstance().getCurrentInstance();
+        FacesContext faces = FacesContext.getCurrentInstance();
         try {
-            userController.save(user);
+            UserController.getInstance().save(user);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../logged/main.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void listUsers() {
-        setUserList(userList = userController.listAll());
+        setUserList(userList = UserController.getInstance().listAll());
     }
 }

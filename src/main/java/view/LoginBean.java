@@ -4,17 +4,16 @@ import controller.UserController;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class LoginBean implements Serializable {
     private String login;
     private String password;
-    private UserController controller = new UserController();
 
 
     public String getLogin() {
@@ -35,7 +34,7 @@ public class LoginBean implements Serializable {
 
     public void login() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        if (controller.authenticateLogin(login, password)) {
+        if (UserController.getInstance().authenticateLogin(login, password)) {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("logged/main.xhtml");
             } catch (IOException e) {

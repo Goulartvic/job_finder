@@ -7,9 +7,16 @@ import model.User;
 import java.util.ArrayList;
 
 public class UserController {
-    UserDao userDao = DaoFactory.getUserDao();
-    User sessionUser;
+    private static UserController instance;
+    private UserDao userDao = DaoFactory.getUserDao();
+    private User sessionUser;
 
+    public static UserController getInstance() {
+        if (instance == null) {
+            instance = new UserController();
+        }
+        return instance;
+    }
 
     public User getSessionUser() {
         if (sessionUser == null) {
@@ -20,6 +27,10 @@ public class UserController {
 
     public void setSessionUser(User sessionUser) {
         this.sessionUser = sessionUser;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
     }
 
     public void save(User user) throws Exception {
@@ -51,7 +62,6 @@ public class UserController {
         User user = userDao.authenticate(login, password);
         if (user != null) {
             setSessionUser(user);
-            System.out.println("usuario logado-> " + user.toString());
             return true;
         }
         System.out.println("usuario não existe");

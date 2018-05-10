@@ -25,6 +25,10 @@ public class User {
     @JoinColumn(name = "curriculum_id")
     @OneToOne
     private Curriculum curriculum;
+    //    TODO - esse puto vai ter relação um pra um com vaga
+    @JoinColumn(name = "job_id")
+    @OneToOne
+    private JobOpportunity jobOpportunity;
 
     public int getId() {
         return id;
@@ -90,6 +94,14 @@ public class User {
         this.curriculum = curriculum;
     }
 
+    public JobOpportunity getJobOpportunity() {
+        return jobOpportunity;
+    }
+
+    public void setJobOpportunity(JobOpportunity jobOpportunity) {
+        this.jobOpportunity = jobOpportunity;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -100,6 +112,7 @@ public class User {
                 ", company='" + company + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", curriculum=" + curriculum +
                 '}';
     }
 }

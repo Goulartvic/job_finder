@@ -15,11 +15,15 @@
     <h2>Faça o cadastro do curriculo</h2>
     <div class="ui-g">
         <h:panelGrid>
-            <p:outputLabel value="Formação"/>
-            <p:inputTextarea value="#{curriculumBean.curriculum.formation}" rows="6" cols="20"/>
-            <p:outputLabel value="Experiência"/>
-            <p:inputTextarea value="#{curriculumBean.curriculum.experience}" rows="6" cols="20"/>
-            <p:commandButton actionListener="#{curriculumBean.save}" value="Salvar"/>
+            <h:form>
+                <p:outputLabel value="Experiência"/>
+                <p:inputTextarea value="#{curriculumBean.curriculum.experience}" rows="6" cols="40"/>
+
+                <p:outputLabel value="Formação"/>
+                <p:inputTextarea value="#{curriculumBean.curriculum.formation}" rows="6" cols="40"/>
+
+                <p:commandButton actionListener="#{curriculumBean.save}" value="Salvar"/>
+            </h:form>
         </h:panelGrid>
     </div>
 </h:body>
