@@ -22,7 +22,7 @@ public class User {
     private String login;
     @Column
     private String password;
-    @Column
+    @JoinColumn(name = "curriculum_id")
     @OneToOne
     private Curriculum curriculum;
 

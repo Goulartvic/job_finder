@@ -9,14 +9,14 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Job Finder</title>
+    <title>Job</title>
 </h:head>
 <h:body>
     <p:panelGrid>
-        <p:commandButton value="Cadastrar curriculo"/>
-        <p:commandButton value="Visualizar curriculo"/>
-        <p:commandButton value="Buscar vagas"/>
-        <p:commandButton value="Cadastrar vaga"/>
+        <p:commandButton value="Cadastrar curriculo" actionListener="#{mainBean.registerCurriculum}"/>
+        <!--<p:commandButton value="Visualizar curriculo"/>-->
+        <!--<p:commandButton value="Buscar vagas"/>-->
+        <p:commandButton value="Cadastrar vaga" actionListener="#{mainBean.registerJob}"/>
     </p:panelGrid>
 </h:body>
 </html>

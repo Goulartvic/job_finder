@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "job_opportunities")
@@ -22,7 +24,10 @@ public class JobOpportunity {
     private float salary;
 
     @ManyToMany
-    @JoinTable
+    @JoinTable(
+            name = "curriculums_for_job", joinColumns = @JoinColumn(name = "job_id"), inverseJoinColumns = @JoinColumn(name = "curriculum_id")
+    )
+    private List<Curriculum> curriculums = new ArrayList<Curriculum>();
 
     public int getId() {
         return id;
@@ -78,5 +83,13 @@ public class JobOpportunity {
 
     public void setSalary(float salary) {
         this.salary = salary;
+    }
+
+    public List<Curriculum> getCurriculums() {
+        return curriculums;
+    }
+
+    public void setCurriculums(List<Curriculum> curriculums) {
+        this.curriculums = curriculums;
     }
 }

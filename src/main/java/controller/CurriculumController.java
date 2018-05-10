@@ -8,10 +8,12 @@ import java.util.ArrayList;
 
 public class CurriculumController {
     CurriculumDao curriculumDao = DaoFactory.getCurriculumDao();
+    UserController userController = new UserController();
 
     public void save(Curriculum curriculum) {
         if (curriculum.getId() == 0) {
             curriculumDao.save(curriculum);
+            userController.getSessionUser().setCurriculum(curriculum);
         } else {
             curriculumDao.update();
         }

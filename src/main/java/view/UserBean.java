@@ -43,7 +43,7 @@ public class UserBean implements Serializable {
         try {
             userController.save(user);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../logged/main.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }

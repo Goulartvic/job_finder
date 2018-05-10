@@ -8,9 +8,13 @@ import java.util.ArrayList;
 
 public class UserController {
     UserDao userDao = DaoFactory.getUserDao();
-    User sessionUser = new User();
+    User sessionUser;
+
 
     public User getSessionUser() {
+        if (sessionUser == null) {
+            sessionUser = new User();
+        }
         return sessionUser;
     }
 
@@ -47,8 +51,10 @@ public class UserController {
         User user = userDao.authenticate(login, password);
         if (user != null) {
             setSessionUser(user);
+            System.out.println("usuario logado-> " + user.toString());
             return true;
         }
+        System.out.println("usuario não existe");
         return false;
     }
 }

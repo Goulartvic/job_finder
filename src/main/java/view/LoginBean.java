@@ -1,7 +1,6 @@
 package view;
 
 import controller.UserController;
-import model.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -17,7 +16,6 @@ public class LoginBean implements Serializable {
     private String password;
     private UserController controller = new UserController();
 
-    private User userSession;
 
     public String getLogin() {
         return login;
@@ -35,19 +33,11 @@ public class LoginBean implements Serializable {
         this.password = password;
     }
 
-    public User getUserSession() {
-        return userSession;
-    }
-
-    public void setUserSession(User userSession) {
-        this.userSession = userSession;
-    }
-
     public void login() {
         FacesContext faces = FacesContext.getCurrentInstance();
         if (controller.authenticateLogin(login, password)) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("public/listAllUsers.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("logged/main.xhtml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -71,7 +61,7 @@ public class LoginBean implements Serializable {
 
     public void registerJob() {
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("public/registerJob.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("logged/registerJob.xhtml");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
