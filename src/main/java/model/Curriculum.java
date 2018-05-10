@@ -37,4 +37,13 @@ public class Curriculum {
     public void setExperience(String experience) {
         this.experience = experience;
     }
+
+    @Override
+    public String toString() {
+        return "Curriculum{" +
+                "id=" + id +
+                ", formation='" + formation + '\'' +
+                ", experience='" + experience + '\'' +
+                '}';
+    }
 }

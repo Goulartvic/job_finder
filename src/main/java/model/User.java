@@ -25,7 +25,6 @@ public class User {
     @JoinColumn(name = "curriculum_id")
     @OneToOne
     private Curriculum curriculum;
-    //    TODO - esse puto vai ter relação um pra um com vaga
     @JoinColumn(name = "job_id")
     @OneToOne
     private JobOpportunity jobOpportunity;

@@ -24,6 +24,7 @@ public class CurriculumBean {
 
     public void save() {
         FacesContext faces = FacesContext.getCurrentInstance();
+        System.out.println(curriculum);
         CurriculumController.getInstance().save(curriculum);
         faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
         try {
