@@ -12,7 +12,7 @@ public class Curriculum {
     @Column
     private String formation;
     @Column
-    private String experience;
+    private String exp;
 
     public int getId() {
         return id;
@@ -30,12 +30,12 @@ public class Curriculum {
         this.formation = formation;
     }
 
-    public String getExperience() {
-        return experience;
+    public String getExp() {
+        return exp;
     }
 
-    public void setExperience(String experience) {
-        this.experience = experience;
+    public void setExp(String exp) {
+        this.exp = exp;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Curriculum {
         return "Curriculum{" +
                 "id=" + id +
                 ", formation='" + formation + '\'' +
-                ", experience='" + experience + '\'' +
+                ", experience='" + exp + '\'' +
                 '}';
     }
 }

@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class JobOpportunityController {
     JobOpportunityDao jobOpportunityDao = DaoFactory.getJobOpportunityDao();
 
-    //TODO - buscar usuarios por vaga
+    //TODO - buscar usuarios e poder visualizar seus curriculos pela sua vaga cadastada
+//    TODO - pode trocar status da vaga
     public void save(JobOpportunity jobOpportunity) throws Exception {
 //        TODO - Fazer verificações
         if (jobOpportunity.getId() == 0) {

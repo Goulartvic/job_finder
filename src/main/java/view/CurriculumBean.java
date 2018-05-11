@@ -12,10 +12,11 @@ import java.io.IOException;
 @ManagedBean
 @ViewScoped
 public class CurriculumBean {
-    private Curriculum curriculum;
+//    TODO - Fazer tela pra alterar curriculo
+    private Curriculum curriculum = new Curriculum();
 
     public Curriculum getCurriculum() {
-        return curriculum = new Curriculum();
+        return curriculum;
     }
 
     public void setCurriculum(Curriculum curriculum) {

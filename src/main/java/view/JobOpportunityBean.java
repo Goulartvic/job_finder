@@ -2,6 +2,7 @@ package view;
 
 import controller.JobOpportunityController;
 import model.JobOpportunity;
+import model.JobStatus;
 import model.TypeOfJob;
 
 import javax.faces.application.FacesMessage;
@@ -45,6 +46,7 @@ public class JobOpportunityBean implements Serializable {
     public void save() {
         FacesContext faces = FacesContext.getCurrentInstance().getCurrentInstance();
         try {
+            job.setJobStatus(JobStatus.ABERTA);
             controller.save(job);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
         } catch (Exception e) {

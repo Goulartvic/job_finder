@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-
+//TODO - campo area de atuação
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

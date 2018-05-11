@@ -17,12 +17,10 @@
         <h:form>
             <h:panelGrid>
                 <p:outputLabel value="Experiência"/>
-                <p:inputTextarea value="#{curriculumBean.curriculum.experience}" rows="6" cols="40"/>
+                <p:inputTextarea value="#{curriculumBean.curriculum.exp}" rows="6" cols="40"/>
 
                 <p:outputLabel value="Formação"/>
                 <p:inputTextarea value="#{curriculumBean.curriculum.formation}" rows="6" cols="40"/>
-
-                <p:outputLabel id="experience" value="#{curriculumBean.curriculum.experience}"/>
 
                 <p:commandButton actionListener="#{curriculumBean.save}" value="Salvar"/>
             </h:panelGrid>
