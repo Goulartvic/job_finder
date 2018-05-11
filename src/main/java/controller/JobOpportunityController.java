@@ -2,6 +2,7 @@ package controller;
 
 import dao.DaoFactory;
 import dao.JobOpportunityDao;
+import model.Curriculum;
 import model.JobOpportunity;
 
 import java.util.ArrayList;
@@ -26,5 +27,11 @@ public class JobOpportunityController {
     public ArrayList<JobOpportunity> listAll() {
         ArrayList<JobOpportunity> jobs = (ArrayList<JobOpportunity>) jobOpportunityDao.findAll();
         return jobs;
+    }
+
+    public JobOpportunity jobById(int id) {
+        JobOpportunity jobOpportunity = jobOpportunityDao.findById(id);
+        System.out.println("jobid "+jobOpportunity);
+        return jobOpportunity;
     }
 }

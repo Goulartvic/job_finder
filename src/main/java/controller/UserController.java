@@ -67,4 +67,18 @@ public class UserController {
         System.out.println("usuario não existe");
         return false;
     }
+
+    public boolean hasCurriculum() {
+        if (getSessionUser().getCurriculum() != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasJobOp() {
+        if (getSessionUser().getJobOpportunity() != null) {
+            return true;
+        }
+        return false;
+    }
 }

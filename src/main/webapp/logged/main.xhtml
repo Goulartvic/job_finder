@@ -15,9 +15,11 @@
     <p:panelGrid>
         <h:form>
             <p:commandButton actionListener="#{mainBean.registerCurriculum}" value="Cadastrar curriculo"/>
+            <p:commandButton actionListener="#{mainBean.changeCurriculum}" value="Alterar curriculo"/>
             <p:commandButton actionListener="#{mainBean.registerJob}" value="Cadastrar vaga"/>
+            <p:commandButton actionListener="#{mainBean.viewJob}" value="Visualizar vaga"/>
             <!--<p:commandButton value="Visualizar curriculo"/>-->
-            <!--<p:commandButton value="Buscar vagas"/>-->
+            <p:commandButton value="Buscar vagas" actionListener="#{mainBean.listJobs}"/>
         </h:form>
     </p:panelGrid>
 </h:body>

@@ -19,4 +19,10 @@ public class CurriculumDaoImp extends GenericHibernateDao<Curriculum> implements
         Query query = manager.createQuery("FROM Curriculum");
         return query.getResultList();
     }
+
+    @Override
+    public Curriculum findById(int id) {
+        Query query = manager.createQuery("From Curriculum c where c.id=:id");
+        return null;
+    }
 }

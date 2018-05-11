@@ -19,4 +19,11 @@ public class JobOpportunityDaoImp extends GenericHibernateDao<JobOpportunity> im
         Query query = manager.createQuery("From JobOpportunity ");
         return query.getResultList();
     }
+
+    @Override
+    public JobOpportunity findById(int id) {
+        Query query = manager.createQuery("FROM JobOpportunity j where j.id =:id ");
+        query.setParameter("id", id);
+        return (JobOpportunity) query.getSingleResult();
+    }
 }

@@ -102,4 +102,19 @@ public class JobOpportunity {
     public void setJobStatus(JobStatus jobStatus) {
         this.jobStatus = jobStatus;
     }
+
+    @Override
+    public String toString() {
+        return "JobOpportunity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", company='" + company + '\'' +
+                ", typeOfJob=" + typeOfJob +
+                ", schedule='" + schedule + '\'' +
+                ", workplace='" + workplace + '\'' +
+                ", salary=" + salary +
+                ", jobStatus=" + jobStatus +
+                ", curriculums=" + curriculums +
+                '}';
+    }
 }

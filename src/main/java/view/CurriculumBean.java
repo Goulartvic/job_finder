@@ -1,6 +1,7 @@
 package view;
 
 import controller.CurriculumController;
+import controller.UserController;
 import model.Curriculum;
 
 import javax.faces.application.FacesMessage;
@@ -12,7 +13,7 @@ import java.io.IOException;
 @ManagedBean
 @ViewScoped
 public class CurriculumBean {
-//    TODO - Fazer tela pra alterar curriculo
+    //    TODO - Fazer tela pra alterar curriculo
     private Curriculum curriculum = new Curriculum();
 
     public Curriculum getCurriculum() {
@@ -33,5 +34,10 @@ public class CurriculumBean {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void loadFields() {
+        System.out.println(UserController.getInstance().getSessionUser().getCurriculum());
+        setCurriculum(UserController.getInstance().getSessionUser().getCurriculum());
     }
 }
