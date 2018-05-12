@@ -12,7 +12,11 @@
     <title>A porra toda</title>
 </h:head>
 <h:body>
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadList}"/>
+    </f:metadata>
     <h:panelGrid>
+        <h:form>
         <p:dataTable var="job" value="#{jobOpportunityBean.jobs}">
             <p:column headerText="Nome">
                 <h:outputText value="#{job.name}"/>
@@ -36,10 +40,12 @@
             <p:column headerText="Horário">
                 <h:outputText value="#{job.schedule}"/>
             </p:column>
-            <!--<p:column headerText="Candidatar-se">-->
-            <!--<p:commandButton actionListener="#{jobOpportunityBean.addUserInJob}" value="#{job.id}"/>-->
-            <!--</p:column>-->
+            <p:column headerText="Candidatar-se">
+                <p:commandButton actionListener="#{jobOpportunityBean.addUserInJob(job.id)}" value="#{job.id}"/>
+            </p:column>
         </p:dataTable>
+        </h:form>
+        <p:commandButton actionListener="#{jobOpportunityBean.imprimeDadosTela()}" value="ansdaus"/>
     </h:panelGrid>
 </h:body>
 </html>

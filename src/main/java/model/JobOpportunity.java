@@ -25,11 +25,9 @@ public class JobOpportunity {
     @Column
     private JobStatus jobStatus;
 
-    @ManyToMany
-    @JoinTable(
-            name = "curriculums_for_job", joinColumns = @JoinColumn(name = "job_id"), inverseJoinColumns = @JoinColumn(name = "curriculum_id")
-    )
-    private List<Curriculum> curriculums = new ArrayList<Curriculum>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "users_for_job", joinColumns = {@JoinColumn(name = "job_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private List<User> users = new ArrayList<User>();
 
     public int getId() {
         return id;
@@ -87,20 +85,20 @@ public class JobOpportunity {
         this.salary = salary;
     }
 
-    public List<Curriculum> getCurriculums() {
-        return curriculums;
-    }
-
-    public void setCurriculums(List<Curriculum> curriculums) {
-        this.curriculums = curriculums;
-    }
-
     public JobStatus getJobStatus() {
         return jobStatus;
     }
 
     public void setJobStatus(JobStatus jobStatus) {
         this.jobStatus = jobStatus;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override
@@ -114,7 +112,7 @@ public class JobOpportunity {
                 ", workplace='" + workplace + '\'' +
                 ", salary=" + salary +
                 ", jobStatus=" + jobStatus +
-                ", curriculums=" + curriculums +
+                ", users=" + users +
                 '}';
     }
 }

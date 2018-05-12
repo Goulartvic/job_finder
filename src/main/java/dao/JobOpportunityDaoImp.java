@@ -1,6 +1,7 @@
 package dao;
 
 import model.JobOpportunity;
+import model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -25,5 +26,17 @@ public class JobOpportunityDaoImp extends GenericHibernateDao<JobOpportunity> im
         Query query = manager.createQuery("FROM JobOpportunity j where j.id =:id ");
         query.setParameter("id", id);
         return (JobOpportunity) query.getSingleResult();
+    }
+
+    @Override
+    public List<JobOpportunity> listOpenJobs() {
+        Query query = manager.createQuery("FROM JobOpportunity j where j.jobStatus = 0");
+        return (List<JobOpportunity>) query.getSingleResult();
+    }
+
+    @Override
+    public List<JobOpportunity> listUsersByJob(int id) {
+        Query query = manager.createQuery("FROM JobOpportunity j , j.users where j.id=:id");
+        return query.getResultList();
     }
 }

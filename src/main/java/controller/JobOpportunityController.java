@@ -11,7 +11,6 @@ public class JobOpportunityController {
     JobOpportunityDao jobOpportunityDao = DaoFactory.getJobOpportunityDao();
 
     //TODO - buscar usuarios e poder visualizar seus curriculos pela sua vaga cadastada
-//    TODO - pode trocar status da vaga
     public void save(JobOpportunity jobOpportunity) throws Exception {
 //        TODO - Fazer verificações
         if (jobOpportunity.getId() == 0) {
@@ -31,7 +30,12 @@ public class JobOpportunityController {
 
     public JobOpportunity jobById(int id) {
         JobOpportunity jobOpportunity = jobOpportunityDao.findById(id);
-        System.out.println("jobid "+jobOpportunity);
+        System.out.println("jobid " + jobOpportunity);
         return jobOpportunity;
+    }
+
+    public ArrayList<JobOpportunity> listOpenjobs() {
+        ArrayList<JobOpportunity> jobsOpen = (ArrayList<JobOpportunity>) jobOpportunityDao.listOpenJobs();
+        return jobsOpen;
     }
 }

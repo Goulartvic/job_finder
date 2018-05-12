@@ -19,15 +19,10 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class JobOpportunityBean implements Serializable {
-    private List<JobOpportunity> jobs;
-    private List<TypeOfJob> typesOfJob;
+    private List<JobOpportunity> jobs = new ArrayList<JobOpportunity>();
+    private List<TypeOfJob> typesOfJob = new ArrayList<TypeOfJob>();
     private JobOpportunityController controller = new JobOpportunityController();
     private JobOpportunity job = new JobOpportunity();
-
-    public JobOpportunityBean() {
-        this.typesOfJob = Arrays.asList(TypeOfJob.values());
-        this.jobs = controller.listAll();
-    }
 
     public List<TypeOfJob> getTypesOfJob() {
         return typesOfJob;
@@ -46,7 +41,7 @@ public class JobOpportunityBean implements Serializable {
     }
 
     public void save() {
-        FacesContext faces = FacesContext.getCurrentInstance().getCurrentInstance();
+        FacesContext faces = FacesContext.getCurrentInstance();
         try {
             job.setJobStatus(JobStatus.ABERTA);
             controller.save(job);
@@ -56,14 +51,23 @@ public class JobOpportunityBean implements Serializable {
         }
     }
 
+    public void loadList() {
+//        TODO - mostrar mensagem que não tem nenhuma vaga aberta e voltar pra main
+        jobs = controller.listOpenjobs();
+        typesOfJob = Arrays.asList(TypeOfJob.values());
+    }
+
     public void loadFields() {
-        System.out.println(UserController.getInstance().getSessionUser().getJobOpportunity());
         setJob(UserController.getInstance().getSessionUser().getJobOpportunity());
     }
 
     public void closeJob() {
-        job.setJobStatus(JobStatus.FECHADA);
-        save();
+        try {
+            job.setJobStatus(JobStatus.FECHADA);
+            controller.save(job);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         loadFields();
     }
 
@@ -75,17 +79,19 @@ public class JobOpportunityBean implements Serializable {
         }
     }
 
-    public void addUserInJob() {
-        int id = 0;
-        System.out.println("addUser");
+    public void addUserInJob(int id) {
         setJob(controller.jobById(id));
-        job.getCurriculums().add(UserController.getInstance().getSessionUser().getCurriculum());
-        System.out.println(job);
-        System.out.println(job.getCurriculums());
+        job.getUsers().add(UserController.getInstance().getSessionUser());
         try {
             controller.save(job);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void imprimeDadosTela() {
+        System.out.println("id - ");
+        System.out.println(job);
+
     }
 }
