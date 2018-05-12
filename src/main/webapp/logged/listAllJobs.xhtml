@@ -12,40 +12,36 @@
     <title>A porra toda</title>
 </h:head>
 <h:body>
-    <f:metadata>
-        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadList}"/>
-    </f:metadata>
     <h:panelGrid>
         <h:form>
-        <p:dataTable var="job" value="#{jobOpportunityBean.jobs}">
-            <p:column headerText="Nome">
-                <h:outputText value="#{job.name}"/>
-            </p:column>
-            <p:column headerText="Empresa">
-                <h:outputText value="#{job.company}"/>
-            </p:column>
+            <p:dataTable var="job" value="#{jobOpportunityBean.jobs}">
+                <p:column headerText="Nome">
+                    <h:outputText value="#{job.name}"/>
+                </p:column>
+                <p:column headerText="Empresa">
+                    <h:outputText value="#{job.company}"/>
+                </p:column>
 
-            <p:column headerText="Tipo vaga">
-                <h:outputText value="#{job.typeOfJob.typeOfJOb}"/>
-            </p:column>
+                <p:column headerText="Tipo vaga">
+                    <h:outputText value="#{job.typeOfJob.typeOfJOb}"/>
+                </p:column>
 
-            <p:column headerText="Local de trabalho">
-                <h:outputText value="#{job.workplace}"/>
-            </p:column>
+                <p:column headerText="Local de trabalho">
+                    <h:outputText value="#{job.workplace}"/>
+                </p:column>
 
-            <p:column headerText="Salário">
-                <h:outputText value="#{job.salary}"/>
-            </p:column>
+                <p:column headerText="Salário">
+                    <h:outputText value="#{job.salary}"/>
+                </p:column>
 
-            <p:column headerText="Horário">
-                <h:outputText value="#{job.schedule}"/>
-            </p:column>
-            <p:column headerText="Candidatar-se">
-                <p:commandButton actionListener="#{jobOpportunityBean.addUserInJob(job.id)}" value="#{job.id}"/>
-            </p:column>
-        </p:dataTable>
+                <p:column headerText="Horário">
+                    <h:outputText value="#{job.schedule}"/>
+                </p:column>
+                <p:column headerText="Candidatar-se">
+                    <p:commandButton actionListener="#{jobOpportunityBean.addUserInJob(job.id)}" value="Enviar CV"/>
+                </p:column>
+            </p:dataTable>
         </h:form>
-        <p:commandButton actionListener="#{jobOpportunityBean.imprimeDadosTela()}" value="ansdaus"/>
     </h:panelGrid>
 </h:body>
 </html>

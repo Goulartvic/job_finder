@@ -31,12 +31,13 @@ public class JobOpportunityDaoImp extends GenericHibernateDao<JobOpportunity> im
     @Override
     public List<JobOpportunity> listOpenJobs() {
         Query query = manager.createQuery("FROM JobOpportunity j where j.jobStatus = 0");
-        return (List<JobOpportunity>) query.getSingleResult();
+        return (List<JobOpportunity>) query.getResultList();
     }
 
     @Override
-    public List<JobOpportunity> listUsersByJob(int id) {
-        Query query = manager.createQuery("FROM JobOpportunity j , j.users where j.id=:id");
-        return query.getResultList();
+    public User userInJob(int id) {
+        Query query = manager.createQuery("from JobOpportunity  j where j.users =:id");
+        query.setParameter("id", id);
+        return (User) query.getSingleResult();
     }
 }

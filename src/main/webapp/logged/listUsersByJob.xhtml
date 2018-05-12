@@ -13,13 +13,13 @@
 </h:head>
 <h:body>
     <f:metadata>
-        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadFields}"/>
+        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadJobFields}"/>
     </f:metadata>
     <h2>Visualizar Usuário</h2>
     <div class="ui-g">
         <h:form>
             <h:panelGrid>
-                <p:dataTable var="user" value="#{userBean.userList}">
+                <p:dataTable var="user" value="#{jobOpportunityBean.job.users}">
                     <p:column headerText="Nome">
                         <h:outputText value="#{user.name}"/>
                     </p:column>

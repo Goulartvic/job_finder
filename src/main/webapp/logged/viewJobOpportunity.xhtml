@@ -13,7 +13,7 @@
 </h:head>
 <h:body>
     <f:metadata>
-        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadFields}"/>
+        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadJobFields}"/>
     </f:metadata>
     <h2>Visualizar vaga</h2>
     <div class="ui-g">
@@ -36,7 +36,7 @@
                 <!--Todo - metodo pra esta puia-->
                 <p:commandButton value="Fechar vaga" actionListener="#{jobOpportunityBean.closeJob}"/>
                 <!--Todo - metodo pra esta puia-->
-                <p:commandButton value="Visualizar curriculos" actionListener="#{jobOpportunityBean.viewUsersByJob}"/>
+                <p:commandButton value="Visualizar curriculos" actionListener="#{jobOpportunityBean.viewUsersByJob()}"/>
 
             </h:panelGrid>
         </h:form>

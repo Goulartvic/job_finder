@@ -26,7 +26,6 @@ public class CurriculumBean {
 
     public void save() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        System.out.println(curriculum);
         CurriculumController.getInstance().save(curriculum);
         faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
         try {
@@ -37,7 +36,6 @@ public class CurriculumBean {
     }
 
     public void loadFields() {
-        System.out.println(UserController.getInstance().getSessionUser().getCurriculum());
         setCurriculum(UserController.getInstance().getSessionUser().getCurriculum());
     }
 }

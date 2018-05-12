@@ -19,10 +19,15 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class JobOpportunityBean implements Serializable {
-    private List<JobOpportunity> jobs = new ArrayList<JobOpportunity>();
-    private List<TypeOfJob> typesOfJob = new ArrayList<TypeOfJob>();
+    private List<JobOpportunity> jobs;
+    private List<TypeOfJob> typesOfJob;
     private JobOpportunityController controller = new JobOpportunityController();
     private JobOpportunity job = new JobOpportunity();
+
+    public JobOpportunityBean() {
+        this.typesOfJob = Arrays.asList(TypeOfJob.values());
+        this.jobs = controller.listOpenjobs();
+    }
 
     public List<TypeOfJob> getTypesOfJob() {
         return typesOfJob;
@@ -46,18 +51,13 @@ public class JobOpportunityBean implements Serializable {
             job.setJobStatus(JobStatus.ABERTA);
             controller.save(job);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
+            FacesContext.getCurrentInstance().getExternalContext().redirect("main.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void loadList() {
-//        TODO - mostrar mensagem que não tem nenhuma vaga aberta e voltar pra main
-        jobs = controller.listOpenjobs();
-        typesOfJob = Arrays.asList(TypeOfJob.values());
-    }
-
-    public void loadFields() {
+    public void loadJobFields() {
         setJob(UserController.getInstance().getSessionUser().getJobOpportunity());
     }
 
@@ -68,7 +68,7 @@ public class JobOpportunityBean implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        loadFields();
+        loadJobFields();
     }
 
     public void viewUsersByJob() {
@@ -81,17 +81,12 @@ public class JobOpportunityBean implements Serializable {
 
     public void addUserInJob(int id) {
         setJob(controller.jobById(id));
+//        TODO - verificar se usuario já se cadastrou na vaga
         job.getUsers().add(UserController.getInstance().getSessionUser());
         try {
             controller.save(job);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void imprimeDadosTela() {
-        System.out.println("id - ");
-        System.out.println(job);
-
     }
 }

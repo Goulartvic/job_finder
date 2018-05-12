@@ -12,5 +12,5 @@ public interface JobOpportunityDao extends DAO<JobOpportunity> {
 
     List<JobOpportunity> listOpenJobs();
 
-    List<JobOpportunity> listUsersByJob(int id);
+    User userInJob(int id);
 }
