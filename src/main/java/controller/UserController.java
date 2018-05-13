@@ -58,14 +58,8 @@ public class UserController {
         return users;
     }
 
-    public boolean authenticateLogin(String login, String password) {
-        User user = userDao.authenticate(login, password);
-        if (user != null) {
-            setSessionUser(user);
-            return true;
-        }
-        System.out.println("usuario não existe");
-        return false;
+    public User authenticateLogin(String login, String password) {
+        return userDao.authenticate(login, password);
     }
 
     public boolean hasCurriculum() {

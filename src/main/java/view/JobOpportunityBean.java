@@ -5,6 +5,7 @@ import controller.UserController;
 import model.JobOpportunity;
 import model.JobStatus;
 import model.TypeOfJob;
+import model.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -80,13 +81,19 @@ public class JobOpportunityBean implements Serializable {
     }
 
     public void addUserInJob(int id) {
+        FacesContext faces = FacesContext.getCurrentInstance();
         setJob(controller.jobById(id));
 //        TODO - verificar se usuario já se cadastrou na vaga
-        job.getUsers().add(UserController.getInstance().getSessionUser());
-        try {
-            controller.save(job);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!controller.userInJob(job, UserController.getInstance().getSessionUser().getId())) {
+            job.getUsers().add(UserController.getInstance().getSessionUser());
+            try {
+                controller.save(job);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário já esta inscrito na vaga", ""));
+            System.out.println("usuario já esta na vaga");
         }
     }
 }

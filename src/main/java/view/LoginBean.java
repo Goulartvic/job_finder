@@ -1,6 +1,7 @@
 package view;
 
 import controller.UserController;
+import model.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -34,7 +35,10 @@ public class LoginBean implements Serializable {
 
     public void login() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        if (UserController.getInstance().authenticateLogin(login, password)) {
+        faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Teste mensagem", ""));
+        User userLogin = UserController.getInstance().authenticateLogin(login, password);
+        if (userLogin != null) {
+            UserController.getInstance().setSessionUser(userLogin);
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("logged/main.xhtml");
             } catch (IOException e) {

@@ -38,7 +38,12 @@ public class JobOpportunityController {
         return jobsOpen;
     }
 
-    public void userInJob() {
-        System.out.println(jobOpportunityDao.userInJob(9));
+    public boolean userInJob(JobOpportunity job, int id) {
+        for (User user : job.getUsers()) {
+            if (user.getId() == UserController.getInstance().getSessionUser().getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
