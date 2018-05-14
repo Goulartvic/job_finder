@@ -46,4 +46,18 @@ public class JobOpportunityController {
         }
         return false;
     }
+
+    public ArrayList<JobOpportunity> listJobsByArea(String area) throws Exception {
+        if (area != null) {
+            ArrayList<JobOpportunity> jobs = (ArrayList<JobOpportunity>) jobOpportunityDao.listJobsByArea(area);
+            if (jobs != null) {
+                return jobs;
+            } else {
+                throw new Exception("Nenhuma vaga foi encontrada");
+            }
+        } else {
+            throw new Exception("Você deve preencher o campo área");
+        }
+
+    }
 }

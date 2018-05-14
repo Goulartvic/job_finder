@@ -18,8 +18,6 @@
             <h:panelGrid>
                 <p:outputLabel value="Vaga"/>
                 <p:inputText value="#{jobOpportunityBean.job.name}"/>
-                <p:outputLabel value="Empresa"/>
-                <p:inputText value="#{jobOpportunityBean.job.company}"/>
                 <p:outputLabel value="Tipo de trabalho"/>
                 <p:selectOneMenu value="#{jobOpportunityBean.job.typeOfJob}">
                     <f:selectItems value="#{jobOpportunityBean.typesOfJob}" var="t" itemValue="#{t}"
@@ -27,10 +25,10 @@
                 </p:selectOneMenu>
                 <p:outputLabel value="Horário"/>
                 <p:inputText value="#{jobOpportunityBean.job.schedule}"/>
-                <p:outputLabel value="Local de trabalho"/>
-                <p:inputText value="#{jobOpportunityBean.job.workplace}"/>
                 <p:outputLabel value="Salário"/>
                 <p:inputText value="#{jobOpportunityBean.job.salary}"/>
+                <p:outputLabel value="Área de atuação"/>
+                <p:inputText value="#{jobOpportunityBean.job.occupationArea}"/>
                 <p:commandButton value="Salvar" actionListener="#{jobOpportunityBean.save}"/>
             </h:panelGrid>
         </h:form>

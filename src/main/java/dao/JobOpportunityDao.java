@@ -11,4 +11,6 @@ public interface JobOpportunityDao extends DAO<JobOpportunity> {
     JobOpportunity findById(int id);
 
     List<JobOpportunity> listOpenJobs();
+
+    List<JobOpportunity> listJobsByArea(String area);
 }

@@ -19,11 +19,11 @@ public class JobOpportunity {
     @Column
     private String schedule;
     @Column
-    private String workplace;
-    @Column
     private float salary;
     @Column
     private JobStatus jobStatus;
+    @Column
+    private String occupationArea;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "users_for_job", joinColumns = {@JoinColumn(name = "job_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
@@ -69,14 +69,6 @@ public class JobOpportunity {
         this.schedule = schedule;
     }
 
-    public String getWorkplace() {
-        return workplace;
-    }
-
-    public void setWorkplace(String workplace) {
-        this.workplace = workplace;
-    }
-
     public float getSalary() {
         return salary;
     }
@@ -101,6 +93,14 @@ public class JobOpportunity {
         this.users = users;
     }
 
+    public String getOccupationArea() {
+        return occupationArea;
+    }
+
+    public void setOccupationArea(String occupationArea) {
+        this.occupationArea = occupationArea.toLowerCase();
+    }
+
     @Override
     public String toString() {
         return "JobOpportunity{" +
@@ -109,9 +109,9 @@ public class JobOpportunity {
                 ", company='" + company + '\'' +
                 ", typeOfJob=" + typeOfJob +
                 ", schedule='" + schedule + '\'' +
-                ", workplace='" + workplace + '\'' +
                 ", salary=" + salary +
                 ", jobStatus=" + jobStatus +
+                ", occupationArea='" + occupationArea + '\'' +
                 ", users=" + users +
                 '}';
     }

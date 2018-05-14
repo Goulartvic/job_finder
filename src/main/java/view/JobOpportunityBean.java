@@ -24,6 +24,7 @@ public class JobOpportunityBean implements Serializable {
     private List<TypeOfJob> typesOfJob;
     private JobOpportunityController controller = new JobOpportunityController();
     private JobOpportunity job = new JobOpportunity();
+    private String area;
 
     public JobOpportunityBean() {
         this.typesOfJob = Arrays.asList(TypeOfJob.values());
@@ -46,10 +47,19 @@ public class JobOpportunityBean implements Serializable {
         return jobs;
     }
 
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
     public void save() {
         FacesContext faces = FacesContext.getCurrentInstance();
         try {
             job.setJobStatus(JobStatus.ABERTA);
+            job.setCompany(UserController.getInstance().getSessionUser().getCompany());
             controller.save(job);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
             FacesContext.getCurrentInstance().getExternalContext().redirect("main.xhtml");
@@ -95,5 +105,17 @@ public class JobOpportunityBean implements Serializable {
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário já esta inscrito na vaga", ""));
             System.out.println("usuario já esta na vaga");
         }
+    }
+
+    public void listJobsByArea() {
+        try {
+            jobs = controller.listJobsByArea(getArea());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void listOpenjobs() {
+        jobs = controller.listOpenjobs();
     }
 }

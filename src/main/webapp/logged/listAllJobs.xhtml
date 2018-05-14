@@ -9,12 +9,18 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>A porra toda</title>
+    <title>Vagas abertas</title>
 </h:head>
 <h:body>
     <h:panelGrid>
         <h:form>
-            <p:dataTable var="job" value="#{jobOpportunityBean.jobs}">
+            <h4>Filtrar por:</h4>
+            <p:inputText value="#{jobOpportunityBean.area}"/>
+            <p:commandButton value="Filtrar" actionListener="#{jobOpportunityBean.listJobsByArea}" process="@all"
+                             update="table-jobs"/>
+            <p:commandButton value="Mostrar todos" actionListener="#{jobOpportunityBean.listOpenjobs}" process="@all"
+                             update="table-jobs"/>
+            <p:dataTable id="table-jobs" var="job" value="#{jobOpportunityBean.jobs}">
                 <p:column headerText="Nome">
                     <h:outputText value="#{job.name}"/>
                 </p:column>
@@ -26,16 +32,16 @@
                     <h:outputText value="#{job.typeOfJob.typeOfJOb}"/>
                 </p:column>
 
-                <p:column headerText="Local de trabalho">
-                    <h:outputText value="#{job.workplace}"/>
-                </p:column>
-
                 <p:column headerText="Salário">
                     <h:outputText value="#{job.salary}"/>
                 </p:column>
 
                 <p:column headerText="Horário">
                     <h:outputText value="#{job.schedule}"/>
+                </p:column>
+
+                <p:column headerText="Área de atuação">
+                    <h:outputText value="#{job.occupationArea}"/>
                 </p:column>
                 <p:column headerText="Candidatar-se">
                     <p:commandButton actionListener="#{jobOpportunityBean.addUserInJob(job.id)}" value="Enviar CV"/>

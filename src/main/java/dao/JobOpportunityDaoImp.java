@@ -1,7 +1,6 @@
 package dao;
 
 import model.JobOpportunity;
-import model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,4 +32,12 @@ public class JobOpportunityDaoImp extends GenericHibernateDao<JobOpportunity> im
         Query query = manager.createQuery("FROM JobOpportunity j where j.jobStatus = 0");
         return (List<JobOpportunity>) query.getResultList();
     }
+
+    @Override
+    public List<JobOpportunity> listJobsByArea(String occupationArea) {
+        Query query = manager.createQuery("From JobOpportunity j where j.occupationArea like :occupationArea");
+        query.setParameter("occupationArea", "%"+occupationArea+"%");
+        return query.getResultList();
+    }
+
 }

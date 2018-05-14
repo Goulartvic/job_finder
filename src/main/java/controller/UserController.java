@@ -58,8 +58,17 @@ public class UserController {
         return users;
     }
 
-    public User authenticateLogin(String login, String password) {
-        return userDao.authenticate(login, password);
+    public User authenticateLogin(String login, String password) throws Exception {
+        if (!login.isEmpty() && !password.isEmpty()) {
+            User user = userDao.authenticate(login, password);
+            if (user != null) {
+                return user;
+            } else {
+                throw new Exception("Login ou senha incorretos");
+            }
+        } else {
+            throw new Exception("Os campos login e senha devem ser preenchidos");
+        }
     }
 
     public boolean hasCurriculum() {

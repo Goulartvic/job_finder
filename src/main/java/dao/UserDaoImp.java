@@ -4,6 +4,7 @@ package dao;
 import model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -36,6 +37,11 @@ public class UserDaoImp extends GenericHibernateDao<User> implements UserDao {
         Query query = manager.createQuery("FROM User u where u.login=:login and u.password=:password");
         query.setParameter("login", login);
         query.setParameter("password", password);
-        return (User) query.getSingleResult();
+        try {
+            return (User) query.getSingleResult();
+
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
 }

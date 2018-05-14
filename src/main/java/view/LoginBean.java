@@ -5,6 +5,7 @@ import model.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
@@ -35,22 +36,16 @@ public class LoginBean implements Serializable {
 
     public void login() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Teste mensagem", ""));
-        User userLogin = UserController.getInstance().authenticateLogin(login, password);
-        if (userLogin != null) {
+        faces.addMessage(null, new FacesMessage("Successful", "deu boa"));
+        User userLogin;
+        try {
+            userLogin = UserController.getInstance().authenticateLogin(login, password);
             UserController.getInstance().setSessionUser(userLogin);
-            try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("logged/main.xhtml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ou senha inválido!", ""));
-            try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("public/registerUser.xhtml");
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
+            faces.addMessage(null, new FacesMessage("Successful", "deu boa"));
+            FacesContext.getCurrentInstance().getExternalContext().redirect("logged/main.xhtml");
+        } catch (Exception e) {
+            faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+//            e.printStackTrace();
         }
     }
 
