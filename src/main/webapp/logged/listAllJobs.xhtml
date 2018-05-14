@@ -11,16 +11,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Vagas abertas</title>
 </h:head>
-<h:body>
+<h:body style="background-color: darkgreen">
     <h:panelGrid>
         <h:form>
-            <h4>Filtrar por:</h4>
-            <p:inputText value="#{jobOpportunityBean.area}"/>
-            <p:commandButton value="Filtrar" actionListener="#{jobOpportunityBean.listJobsByArea}" process="@all"
+            <h3 style="color: aliceblue">Buscar vagas por área:</h3>
+            <p:inputText value="#{jobBean.area}" style="margin-bottom: 1%; margin-right: 0.5%"/>
+            <p:commandButton value="Buscar" actionListener="#{jobBean.listJobsByArea}" process="@all"
                              update="table-jobs"/>
-            <p:commandButton value="Mostrar todos" actionListener="#{jobOpportunityBean.listOpenjobs}" process="@all"
-                             update="table-jobs"/>
-            <p:dataTable id="table-jobs" var="job" value="#{jobOpportunityBean.jobs}">
+            <p:dataTable id="table-jobs" var="job" value="#{jobBean.jobs}" style="margin-bottom: 1%">
                 <p:column headerText="Nome">
                     <h:outputText value="#{job.name}"/>
                 </p:column>
@@ -44,9 +42,10 @@
                     <h:outputText value="#{job.occupationArea}"/>
                 </p:column>
                 <p:column headerText="Candidatar-se">
-                    <p:commandButton actionListener="#{jobOpportunityBean.addUserInJob(job.id)}" value="Enviar CV"/>
+                    <p:commandButton actionListener="#{jobBean.addUserInJob(job.id)}" value="Enviar CV"/>
                 </p:column>
             </p:dataTable>
+            <p:commandButton actionListener="#{jobBean.closeJob}" value="Sair"/>
         </h:form>
     </h:panelGrid>
 </h:body>

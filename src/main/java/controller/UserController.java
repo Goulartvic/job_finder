@@ -1,14 +1,14 @@
 package controller;
 
 import dao.DaoFactory;
-import dao.UserDao;
+import dao.UserDaoInterface;
 import model.User;
 
 import java.util.ArrayList;
 
 public class UserController {
     private static UserController instance;
-    private UserDao userDao = DaoFactory.getUserDao();
+    private UserDaoInterface userDaoInterface = DaoFactory.getUserDaoInterface();
     private User sessionUser;
 
     public static UserController getInstance() {
@@ -29,8 +29,8 @@ public class UserController {
         this.sessionUser = sessionUser;
     }
 
-    public UserDao getUserDao() {
-        return userDao;
+    public UserDaoInterface getUserDaoInterface() {
+        return userDaoInterface;
     }
 
     public void save(User user) throws Exception {
@@ -47,20 +47,20 @@ public class UserController {
             throw new Exception("A senha é obrigatória!");
         }
         if (user.getId() == 0) {
-            userDao.save(user);
+            userDaoInterface.save(user);
         } else {
-            userDao.update();
+            userDaoInterface.update();
         }
     }
 
     public ArrayList<User> listAll() {
-        ArrayList<User> users = (ArrayList<User>) userDao.findAll();
+        ArrayList<User> users = (ArrayList<User>) userDaoInterface.findAll();
         return users;
     }
 
     public User authenticateLogin(String login, String password) throws Exception {
         if (!login.isEmpty() && !password.isEmpty()) {
-            User user = userDao.authenticate(login, password);
+            User user = userDaoInterface.authenticate(login, password);
             if (user != null) {
                 return user;
             } else {

@@ -42,10 +42,10 @@ public class mainBean implements Serializable {
         }
     }
 
-    public void viewJob() {
+    public void viewJobOpportunity() {
         if (UserController.getInstance().hasJobOp()) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("viewJobOpportunity.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("viewJobVagancy.xhtml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -54,7 +54,7 @@ public class mainBean implements Serializable {
         }
     }
 
-    public void listJobs() {
+    public void listAllJobs() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("listAllJobs.xhtml");
         } catch (IOException e) {

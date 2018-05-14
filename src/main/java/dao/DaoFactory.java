@@ -1,28 +1,28 @@
 package dao;
 
 public abstract class DaoFactory {
-    private static UserDao userDao;
-    private static JobOpportunityDao jobOpportunityDao;
-    private static CurriculumDao curriculumDao;
+    private static UserDaoInterface userDaoInterface;
+    private static JobDaoInterface jobDaoInterface;
+    private static CurriculumDaoInterface curriculumDaoInterface;
 
-    public static UserDao getUserDao() {
-        if (userDao == null) {
-            userDao = new UserDaoImp();
+    public static UserDaoInterface getUserDaoInterface() {
+        if (userDaoInterface == null) {
+            userDaoInterface = new UserDao();
         }
-        return userDao;
+        return userDaoInterface;
     }
 
-    public static JobOpportunityDao getJobOpportunityDao() {
-        if (jobOpportunityDao == null) {
-            jobOpportunityDao = new JobOpportunityDaoImp();
+    public static JobDaoInterface getJobDaoInterface() {
+        if (jobDaoInterface == null) {
+            jobDaoInterface = new JobDao();
         }
-        return jobOpportunityDao;
+        return jobDaoInterface;
     }
 
-    public static CurriculumDao getCurriculumDao() {
-        if (curriculumDao == null) {
-            curriculumDao = new CurriculumDaoImp();
+    public static CurriculumDaoInterface getCurriculumDaoInterface() {
+        if (curriculumDaoInterface == null) {
+            curriculumDaoInterface = new CurriculumDao();
         }
-        return curriculumDao;
+        return curriculumDaoInterface;
     }
 }

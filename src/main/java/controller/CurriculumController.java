@@ -1,38 +1,37 @@
 package controller;
 
-import dao.CurriculumDao;
+import dao.CurriculumDaoInterface;
 import dao.DaoFactory;
-import dao.UserDao;
+import dao.UserDaoInterface;
 import model.Curriculum;
 
 import java.util.ArrayList;
 
 public class CurriculumController {
-    private static CurriculumController instance;
+    private static CurriculumController curriculumController;
 
-    private CurriculumDao curriculumDao = DaoFactory.getCurriculumDao();
-    private UserDao userDao = DaoFactory.getUserDao();
+    private CurriculumDaoInterface curriculumDaoInterface = DaoFactory.getCurriculumDaoInterface();
+    private UserDaoInterface userDaoInterface = DaoFactory.getUserDaoInterface();
 
-    public static CurriculumController getInstance() {
-        if (instance == null) {
-            instance = new CurriculumController();
+    public static CurriculumController getCurriculumController() {
+        if (curriculumController == null) {
+            curriculumController = new CurriculumController();
         }
-        return instance;
+        return curriculumController;
     }
 
     public void save(Curriculum curriculum) {
-//        TODO - Fazer validações
         if (curriculum.getId() == 0) {
-            curriculumDao.save(curriculum);
+            curriculumDaoInterface.save(curriculum);
             UserController.getInstance().getSessionUser().setCurriculum(curriculum);
-            userDao.save(UserController.getInstance().getSessionUser());
+            userDaoInterface.save(UserController.getInstance().getSessionUser());
         } else {
-            curriculumDao.update();
+            curriculumDaoInterface.update();
         }
     }
 
     public ArrayList<Curriculum> listAll() {
-        ArrayList<Curriculum> curriculums = (ArrayList<Curriculum>) curriculumDao.findAll();
+        ArrayList<Curriculum> curriculums = (ArrayList<Curriculum>) curriculumDaoInterface.findAll();
         return curriculums;
     }
 }

@@ -6,12 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class JobOpportunityDaoImp extends GenericHibernateDao<JobOpportunity> implements JobOpportunityDao {
+public class JobDao extends GenericHibernateDao<JobOpportunity> implements JobDaoInterface {
 
     private EntityManager manager;
 
-    public JobOpportunityDaoImp() {
-        manager = ConnectionManager.getEntityManager();
+    public JobDao() {
+        manager = Connection.getEntityManager();
     }
 
     @Override

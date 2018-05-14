@@ -11,8 +11,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Cadastro de Vagas</title>
 </h:head>
-<h:body>
-    <h2>Faça o cadastro do curriculo</h2>
+<h:body style="background-color: darkgreen">
+    <h2 style="color: aliceblue">Faça o cadastro do curriculo</h2>
     <div class="ui-g">
         <h:form>
             <h:panelGrid>
@@ -22,7 +22,10 @@
                 <p:outputLabel value="Formação"/>
                 <p:inputTextarea value="#{curriculumBean.curriculum.formation}" rows="6" cols="40"/>
 
-                <p:commandButton actionListener="#{curriculumBean.save}" value="Salvar"/>
+                <div>
+                    <p:commandButton actionListener="#{curriculumBean.saveCurriculum}" value="Salvar"/>
+                    <p:commandButton actionListener="${curriculumBean.backToMenu()}" value="Cancelar"/>
+                </div>
             </h:panelGrid>
         </h:form>
     </div>

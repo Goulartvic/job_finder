@@ -36,16 +36,15 @@ public class LoginBean implements Serializable {
 
     public void login() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        faces.addMessage(null, new FacesMessage("Successful", "deu boa"));
+        faces.addMessage(null, new FacesMessage("Successful", "Login efetuado com sucesso!"));
         User userLogin;
         try {
             userLogin = UserController.getInstance().authenticateLogin(login, password);
             UserController.getInstance().setSessionUser(userLogin);
-            faces.addMessage(null, new FacesMessage("Successful", "deu boa"));
-            FacesContext.getCurrentInstance().getExternalContext().redirect("logged/main.xhtml");
+            faces.addMessage(null, new FacesMessage("Successful", "Login efetuado com sucesso!"));
+            FacesContext.getCurrentInstance().getExternalContext().redirect("logged/menu.xhtml");
         } catch (Exception e) {
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-//            e.printStackTrace();
         }
     }
 

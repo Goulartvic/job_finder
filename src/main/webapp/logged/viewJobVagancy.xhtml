@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Cadastro de Vagas</title>
+</h:head>
+<h:body style="background-color: darkgreen">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{jobBean.loadJobFields}"/>
+    </f:metadata>
+    <h2 style="color: aliceblue">Visualizar vaga</h2>
+    <div class="ui-g">
+        <h:form>
+            <h:panelGrid>
+                <p:outputLabel value="#{jobBean.job.name}"/>
+
+                <p:outputLabel value="#{jobBean.job.company}"/>
+
+                <p:outputLabel value="#{jobBean.job.typeOfJob}"/>
+
+                <p:outputLabel value="#{jobBean.job.schedule}"/>
+
+                <p:outputLabel value="#{jobBean.job.salary}"/>
+
+                <p:outputLabel value="#{jobBean.job.jobStatus}"/>
+
+                <p:commandButton value="Visualizar curriculos" actionListener="#{jobBean.viewUsersByJob()}"/>
+                <p:commandButton value="Sair" actionListener="#{jobBean.closeJob}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+</h:body>
+</html>

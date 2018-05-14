@@ -11,24 +11,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Job Finder</title>
 </h:head>
-<h:body>
-    <h2>Área de login</h2>
-    <div class="ui-g">
+<h:body style="background-color: darkgreen">
+    <div class="ui-g" style="text-align: center">
         <h:form id="form-login">
             <p:growl id="growl" showDetail="true" sticky="true"/>
-            <div class="ui-g-12">
-                <p:panelGrid columns="1">
-                    <p:outputLabel value="Login"/>
+            <div class="ui-g-12" style="background-color: darkgreen">
+                <h2 style="color: aliceblue">Área de login</h2>
+                <div style="margin-bottom: 5%">
+                    <p:outputLabel value="Login "/>
                     <p:inputText value="#{loginBean.login}"/>
-
+                </div>
+                <div style="margin-bottom: 5%">
                     <p:outputLabel value="Senha"/>
                     <p:password id="nonFeedback" value="#{loginBean.password}"/>
-
-                    <p:commandButton actionListener="#{loginBean.login()}" value="Login"/>
-                </p:panelGrid>
+                </div>
+                <p:commandButton actionListener="#{loginBean.login()}" value="Login"/>
+                <p:commandButton id="btn-login" actionListener="#{loginBean.registerUser}" update="growl" value="Cadastrar usuário"/>
             </div>
-            <p:commandButton id="btn-login" actionListener="#{loginBean.registerUser}" update="growl"
-                             value="Cadastrar usuário"/>
         </h:form>
     </div>
 </h:body>

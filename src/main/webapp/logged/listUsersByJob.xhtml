@@ -11,15 +11,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Cadastro de Vagas</title>
 </h:head>
-<h:body>
+<h:body style="background-color: darkgreen">
     <f:metadata>
-        <f:event type="preRenderView" listener="#{jobOpportunityBean.loadJobFields}"/>
+        <f:event type="preRenderView" listener="#{jobBean.loadJobFields}"/>
     </f:metadata>
-    <h2>Visualizar Usuários inscritos na vaga</h2>
+    <h2 style="color: aliceblue">Visualizar Usuários inscritos na vaga</h2>
     <div class="ui-g">
         <h:form>
             <h:panelGrid>
-                <p:dataTable var="user" value="#{jobOpportunityBean.job.users}">
+                <p:dataTable var="user" value="#{jobBean.job.users}">
                     <p:column headerText="Nome">
                         <h:outputText value="#{user.name}"/>
                     </p:column>

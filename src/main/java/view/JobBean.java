@@ -1,11 +1,10 @@
 package view;
 
-import controller.JobOpportunityController;
+import controller.JobController;
 import controller.UserController;
 import model.JobOpportunity;
 import model.JobStatus;
 import model.TypeOfJob;
-import model.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -13,20 +12,19 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @ManagedBean
 @ViewScoped
-public class JobOpportunityBean implements Serializable {
+public class JobBean implements Serializable {
     private List<JobOpportunity> jobs;
     private List<TypeOfJob> typesOfJob;
-    private JobOpportunityController controller = new JobOpportunityController();
+    private JobController controller = new JobController();
     private JobOpportunity job = new JobOpportunity();
     private String area;
 
-    public JobOpportunityBean() {
+    public JobBean() {
         this.typesOfJob = Arrays.asList(TypeOfJob.values());
         this.jobs = controller.listOpenjobs();
     }
@@ -62,7 +60,7 @@ public class JobOpportunityBean implements Serializable {
             job.setCompany(UserController.getInstance().getSessionUser().getCompany());
             controller.save(job);
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
-            FacesContext.getCurrentInstance().getExternalContext().redirect("main.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("menu.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,6 +74,7 @@ public class JobOpportunityBean implements Serializable {
         try {
             job.setJobStatus(JobStatus.FECHADA);
             controller.save(job);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("menu.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,7 +92,6 @@ public class JobOpportunityBean implements Serializable {
     public void addUserInJob(int id) {
         FacesContext faces = FacesContext.getCurrentInstance();
         setJob(controller.jobById(id));
-//        TODO - verificar se usuario já se cadastrou na vaga
         if (!controller.userInJob(job, UserController.getInstance().getSessionUser().getId())) {
             job.getUsers().add(UserController.getInstance().getSessionUser());
             try {
@@ -103,7 +101,7 @@ public class JobOpportunityBean implements Serializable {
             }
         } else {
             faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário já esta inscrito na vaga", ""));
-            System.out.println("usuario já esta na vaga");
+            System.out.println("Usuário já esta na vaga");
         }
     }
 

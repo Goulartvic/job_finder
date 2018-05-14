@@ -5,7 +5,7 @@ import model.User;
 
 import java.util.List;
 
-public interface JobOpportunityDao extends DAO<JobOpportunity> {
+public interface JobDaoInterface extends DAO<JobOpportunity> {
     List<JobOpportunity> findAll();
 
     JobOpportunity findById(int id);

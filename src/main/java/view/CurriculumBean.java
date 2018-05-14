@@ -13,7 +13,6 @@ import java.io.IOException;
 @ManagedBean
 @ViewScoped
 public class CurriculumBean {
-    //    TODO - Fazer tela pra alterar curriculo
     private Curriculum curriculum = new Curriculum();
 
     public Curriculum getCurriculum() {
@@ -24,12 +23,12 @@ public class CurriculumBean {
         this.curriculum = curriculum;
     }
 
-    public void save() {
+    public void saveCurriculum() {
         FacesContext faces = FacesContext.getCurrentInstance();
-        CurriculumController.getInstance().save(curriculum);
+        CurriculumController.getCurriculumController().save(curriculum);
         faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("main.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("menu.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,5 +36,13 @@ public class CurriculumBean {
 
     public void loadFields() {
         setCurriculum(UserController.getInstance().getSessionUser().getCurriculum());
+    }
+
+    public void backToMenu() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("menu.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

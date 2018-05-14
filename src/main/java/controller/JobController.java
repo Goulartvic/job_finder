@@ -1,40 +1,37 @@
 package controller;
 
 import dao.DaoFactory;
-import dao.JobOpportunityDao;
-import model.Curriculum;
+import dao.JobDaoInterface;
 import model.JobOpportunity;
 import model.User;
 
 import java.util.ArrayList;
 
-public class JobOpportunityController {
-    JobOpportunityDao jobOpportunityDao = DaoFactory.getJobOpportunityDao();
+public class JobController {
+    JobDaoInterface jobDaoInterface = DaoFactory.getJobDaoInterface();
 
-    //TODO - buscar usuarios e poder visualizar seus curriculos pela sua vaga cadastada
     public void save(JobOpportunity jobOpportunity) throws Exception {
-//        TODO - Fazer verificações
         if (jobOpportunity.getId() == 0) {
-            jobOpportunityDao.save(jobOpportunity);
+            jobDaoInterface.save(jobOpportunity);
             UserController.getInstance().getSessionUser().setJobOpportunity(jobOpportunity);
-            UserController.getInstance().getUserDao().save(UserController.getInstance().getSessionUser());
+            UserController.getInstance().getUserDaoInterface().save(UserController.getInstance().getSessionUser());
         } else {
-            jobOpportunityDao.update();
+            jobDaoInterface.update();
         }
     }
 
     public ArrayList<JobOpportunity> listAll() {
-        ArrayList<JobOpportunity> jobs = (ArrayList<JobOpportunity>) jobOpportunityDao.findAll();
+        ArrayList<JobOpportunity> jobs = (ArrayList<JobOpportunity>) jobDaoInterface.findAll();
         return jobs;
     }
 
     public JobOpportunity jobById(int id) {
-        JobOpportunity jobOpportunity = jobOpportunityDao.findById(id);
+        JobOpportunity jobOpportunity = jobDaoInterface.findById(id);
         return jobOpportunity;
     }
 
     public ArrayList<JobOpportunity> listOpenjobs() {
-        ArrayList<JobOpportunity> jobsOpen = (ArrayList<JobOpportunity>) jobOpportunityDao.listOpenJobs();
+        ArrayList<JobOpportunity> jobsOpen = (ArrayList<JobOpportunity>) jobDaoInterface.listOpenJobs();
         return jobsOpen;
     }
 
@@ -49,7 +46,7 @@ public class JobOpportunityController {
 
     public ArrayList<JobOpportunity> listJobsByArea(String area) throws Exception {
         if (area != null) {
-            ArrayList<JobOpportunity> jobs = (ArrayList<JobOpportunity>) jobOpportunityDao.listJobsByArea(area);
+            ArrayList<JobOpportunity> jobs = (ArrayList<JobOpportunity>) jobDaoInterface.listJobsByArea(area);
             if (jobs != null) {
                 return jobs;
             } else {
